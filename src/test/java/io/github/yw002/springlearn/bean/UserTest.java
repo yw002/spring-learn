@@ -15,12 +15,14 @@ public class UserTest {
          基于注解配置的应用上下文，是 Spring 提供的纯注解开发的核心容器类，专门用来加载@Configuration标注的配置类
          作用 = SpringBoot 中的SpringApplication.run(...)，都是启动 Spring 容器
          */
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(MySpringConfig.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MySpringConfig.class);
         /* 第二步，从Spring容器中，获取已经创建好的User Bean对象。
          这里的 User 对象，是 Spring 已创建好、完成所有初始化、完成所有增强的成品Bean
         */
         User user = ctx.getBean(User.class);
         // 打印User对象，验证Bean确实被创建成功
-        System.out.println("Bean创建成功了，这个bean是在生命周期【BeanPostProcessor#after中】被CGLIB代理后的user："+user);
+        System.out.println("Bean创建成功了，这个bean是在生命周期【BeanPostProcessor#after中】被CGLIB代理后的user：" + user);
+        // 关闭容器，触发Bean的销毁方法
+        ctx.close();
     }
 }
