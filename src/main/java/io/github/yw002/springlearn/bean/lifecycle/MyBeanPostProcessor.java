@@ -1,6 +1,5 @@
 package io.github.yw002.springlearn.bean.lifecycle;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.cglib.proxy.Enhancer;
@@ -15,7 +14,7 @@ import java.lang.reflect.Method;
 @Component
 public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
-    public @Nullable Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (beanName.equals("user")) {
             System.out.println("BeanPostProcessor 的 postProcessBeforeInitialization 方法执行了->Bean 的【所有初始化动作执行之前】执行的后置增强");
         }
@@ -23,7 +22,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     }
 
     @Override
-    public @Nullable Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (beanName.equals("user")) {
             System.out.println("BeanPostProcessor 的 postProcessAfterInitialization 方法执行了->Bean 的【所有初始化动作完成之后】执行的后置增强");
             /**

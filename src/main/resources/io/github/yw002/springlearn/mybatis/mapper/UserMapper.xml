@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.github.yw002.springlearn.mybatis.mapper.UserMapper">
+    <!-- 配置了 <package name="xx"> 后，实体类支持大小写随意的别名【User/user/uSeR】   -->
+    <resultMap id="userResultMap" type="User" autoMapping="true">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="gender" column="gender"/>
+        <result property="addr" column="addr"/>
+        <!-- 在此处fetchType="lazy"开启延迟加载 -->
+        <collection property="orderList" ofType="order"
+                    select="io.github.yw002.springlearn.mybatis.mapper.OrderMapper.findByUid"
+                    column="id"
+                    fetchType="lazy"
+        />
+    </resultMap>
+
+    <select id="selectById" resultMap="userResultMap">
+        SELECT *
+        FROM tb_user
+        WHERE id = #{id}
+    </select>
+</mapper>

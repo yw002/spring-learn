@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <!-- 开启驼峰命名自动映射 例如 user_id → userId -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 全局配置，开启延迟加载【按需加载】，
+        全局配置的优先级低于局部【例如UserMapper.xml中的<collection ... fetchType="lazy" /> 】 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+        <!-- 开启Mybatis原生日志打印 ========== -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!-- 配置完在 Mapper.xml 中可以直接写【类名】替代【全限定类名】-->
+    <typeAliases>
+        <package name="io.github.yw002.springlearn.mybatis.pojo"/>
+    </typeAliases>
+
+    <environments default="development">
+        <!-- 单个数据库环境配置，id和上面的default对应 -->
+        <environment id="development">
+            <!-- 事务管理器配置 -->
+            <transactionManager type="JDBC"/>
+            <!-- 数据源配置，type="POOLED"，使用 Mybatis 内置的【数据库连接池】 -->
+            <dataSource type="POOLED">
+                <!-- 1. 数据库驱动类全路径 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <!-- 2. 数据库连接地址：localhost=本机，3306=端口，数据库名 -->
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/spring_learn?useSSL=false&amp;serverTimezone=UTC"/>
+                <!-- 3. 数据库登录账号 -->
+                <property name="username" value="root"/>
+                <!-- 4. 数据库登录密码 -->
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 批量注册指定包下的【所有Mapper接口】，【默认规则】扫描包后，实体类支持大小写随意的别名 -->
+        <package name="io.github.yw002.springlearn.mybatis.mapper"/>
+    </mappers>
+</configuration>
