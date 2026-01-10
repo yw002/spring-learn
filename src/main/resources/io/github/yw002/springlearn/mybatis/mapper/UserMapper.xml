@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="io.github.yw002.springlearn.mybatis.mapper.UserMapper">
+    <!-- 开启mybatis的二级缓存（需要在配置中<setting name="cacheEnabled" value="true"/>） -->
+    <cache />
+
     <!-- 配置了 <package name="xx"> 后，实体类支持大小写随意的别名【User/user/uSeR】   -->
     <resultMap id="userResultMap" type="User" autoMapping="true">
         <id property="id" column="id"/>

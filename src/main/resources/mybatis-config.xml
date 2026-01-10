@@ -13,6 +13,9 @@
 
         <!-- 开启Mybatis原生日志打印 ========== -->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!-- 开启Mybatis的二级缓存，作用域是namespace/Mapper.xml，需要在对应的Mapper文件中添加标签<cache /> -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- 配置完在 Mapper.xml 中可以直接写【类名】替代【全限定类名】-->
