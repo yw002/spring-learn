@@ -41,10 +41,23 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- SpringBoot AOP 核心依赖 （，包含AspectJ所有注解和解析器） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- SpringBoot Web核心依赖，包含@RestController + 请求映射等所有web相关注解 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Mybatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>4.0.0</version>
+            <version>3.0.4</version>
         </dependency>
 
         <!-- MySQL8.x数据库驱动依赖） -->

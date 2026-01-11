@@ -1,3 +1,9 @@
 spring:
   application:
     name: spring-learn
+  # spring-boot 的 mybatis 依赖，需要配置才能启动
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_learn?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
