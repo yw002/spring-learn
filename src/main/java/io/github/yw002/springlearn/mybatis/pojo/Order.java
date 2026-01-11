@@ -1,6 +1,8 @@
 package io.github.yw002.springlearn.mybatis.pojo;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
     private Integer id;
     private String name;
     private Integer userId;
