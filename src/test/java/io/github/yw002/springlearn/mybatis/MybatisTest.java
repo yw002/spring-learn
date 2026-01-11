@@ -31,13 +31,13 @@ public class MybatisTest {
         // 2.通过SqlSessionFactory工厂创建SqlSession会话对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
         /*
-        3.一个sqlSession中有一个Executor, Mybatis底层核心组件Executor执行器（调度核心），
+        3.每一个sqlSession中有一个Executor执行器的属性, Mybatis底层核心组件Executor执行器（调度核心），
         接收SqlSession指令，负责找到对应SQL并执行数据库交互操作
         */
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         /*
-        4.Executor执行器创建MappedStatement对象，
-         封装Mapper.xml中SQL的完整元数据（id/参数映射/结果映射/语句类型）
+        4.Executor接口的执行方法中有一个MappedStatement类型的参数，封装了映射信息，
+         也就是Mapper.xml中SQL的完整元数据（id/参数映射/结果映射/语句类型）
 
          内部完成：接收Mapper接口传入的输入参数并赋值给SQL占位符，
          执行SQL得到结果集后，自动转换映射为指定的Java实体对象
