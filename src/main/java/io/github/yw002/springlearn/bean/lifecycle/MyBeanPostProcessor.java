@@ -42,7 +42,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
                     // args：方法执行时传入的参数
                     // ========== 这里是【增强逻辑】的核心位置 ==========
                     System.out.println("【CGLIB代理-前置增强（原User方法执行前的代码）】原生User类准备执行的方法：" + method.getName());
-                    // 执行【原User对象】的目标方法，获取返回值
+                    // 执行【原User对象】的目标方法，获取返回值。相当于在CGLIB生成的子类中调用 super.xxx()方法，在执行前后可以做增强。
                     Object result = method.invoke(bean, args);
                     System.out.println("【CGLIB代理-执行中（原User方法）】：执行了【Object result = method.invoke(bean, args);】");
                     System.out.println("【CGLIB代理-后置增强（原User方法执行后的代码）】原生User类执行完毕的方法：" + method.getName() + "，返回值（测试类打印对象toString字符串）：" + result);

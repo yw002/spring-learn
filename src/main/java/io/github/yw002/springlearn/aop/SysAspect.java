@@ -14,7 +14,8 @@ import java.lang.reflect.Method;
 @Aspect // 标记为切面类，Spring会识别这个类为AOP切面
 public class SysAspect {
     /**
-     * 单独定义了一个空方法 pointCut() 本质是抽离复用，两种写法等价，效果完全一致
+     * Pointcut注解的作用是绑定这个切点表达式
+     * 单独定义了一个别名方法（空方法）： pointCut()， 本质是抽离复用，两种写法等价，效果完全一致
      */
     @Pointcut("@annotation(io.github.yw002.springlearn.aop.Log)")
     private void pointCut() {
@@ -22,7 +23,8 @@ public class SysAspect {
 
     /**
      * 说明：@Around是环绕通知，环绕通知是功能最强的通知，能控制目标方法【执行前/执行后/异常时】的所有逻辑
-     * 备注：也可以直接把切点表达式写在@Around中，例如：@Around("@annotation(io.github.yw002.springlearn.aop.Log)")
+     * 备注：环绕通知本身就支持写切点表达式，可以直接把切点表达式写在@Around中，
+     * 例如@Around("@annotation(io.github.yw002.springlearn.aop.Log)")
      *
      * @param joinPoint
      * @return
